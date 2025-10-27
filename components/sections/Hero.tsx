@@ -4,14 +4,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import { HERO } from "@/lib/constants";
 import Button from "@/components/ui/Button";
+import ParticleBackground from "@/components/ui/ParticleBackground";
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-light-gray to-white overflow-hidden">
-      {/* Cellular automaton animation here */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-      </div>
+      {/* Particle Network Background */}
+      <ParticleBackground />
 
       <div className="container mx-auto px-6 py-20 relative z-10">
         <motion.div
@@ -20,10 +19,10 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="text-center max-w-5xl mx-auto"
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-dark mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold text-dark mb-6 leading-tight" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
             {HERO.headline}
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl text-gray-700 font-medium mb-12 max-w-3xl mx-auto" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.1)' }}>
             {HERO.subheadline}
           </p>
 

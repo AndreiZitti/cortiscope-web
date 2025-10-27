@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,7 +27,14 @@ export default function Header() {
       }`}
     >
       <nav className="container mx-auto px-6 flex justify-between items-center">
-        <a href="/" className="flex items-center">
+        <a href="/" className="flex items-center gap-3">
+          <Image
+            src="/CortiscopeLogo.png"
+            alt="Cortiscope Logo"
+            width={40}
+            height={40}
+            className="w-10 h-10"
+          />
           <div className="text-2xl font-bold text-primary">
             Cortiscope
           </div>

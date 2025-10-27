@@ -13,9 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.9.1",
     "next": "^13.5.11",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "tsparticles": "^3.9.1"
   },
   "devDependencies": {
     "@types/node": "^24.9.1",

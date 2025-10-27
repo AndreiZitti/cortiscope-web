@@ -1,7 +1,7 @@
 // Hero Section
 export const HERO = {
   headline: "Medical AI That Actually Deploys",
-  subheadline: "Physics-informed neural networks for medical imaging. Runs on CPUs, explains every decision, works where GPUs don't.",
+  subheadline: "Biology guides. Physics informs. AI supports.",
   stats: [
     { value: "30K", label: "parameters" },
     { value: "60kB", label: "model" },
@@ -62,48 +62,48 @@ export const COMPARISON = {
   ],
 };
 
-// Biologically Aware Section
-export const BIOLOGICALLY_AWARE = {
-  headline: "AI That Understands Anatomy",
+// Why NosoScan Works Section
+export const WHY_IT_WORKS = {
+  headline: "Why NosoScan Works",
+  subheadline: "The three-pillar methodology enables efficiency + accuracy",
   parts: [
     {
-      title: "Biology to understand anatomy",
-      description: "Built-in anatomical knowledge ensures realistic, biologically-plausible results",
+      title: "Biology guides",
+      description: "Built-in anatomical knowledge ensures realistic, biologically-plausible results. The model understands tissue structure and organ relationships.",
     },
     {
-      title: "Physics to ensure realism",
-      description: "Mathematical rules and physical principles guide the model's predictions",
+      title: "Physics informs",
+      description: "Mathematical rules and physical principles guide the model's predictions, ensuring outputs that obey natural laws and constraints.",
     },
     {
-      title: "AI to analyze images",
-      description: "Neural networks process medical scans with speed and precision",
+      title: "AI supports",
+      description: "Neural networks process medical scans with speed and precision, combining learned patterns with biological and physical constraints.",
     },
   ],
+  result: "Result: 30K parameters, not millions. Accuracy without bloat.",
+  videoCaption: "Biology-guided segmentation in action",
 };
 
-// Technology Section
-export const TECHNOLOGY = {
-  title: "NosoScan Technology",
+// Built for Trust Section
+export const BUILT_FOR_TRUST = {
+  title: "Built for Trust",
+  subheadline: "Transparency and explainability by design",
   features: [
     {
-      title: "Lightweight Architecture",
-      description: "30,000 parameters. 60kB code size. Runs on hospital-grade laptops or even Raspberry Pi.",
+      title: "Every decision pathway is visible",
+      description: "No hidden layers, no mystery—see exactly how the model reaches its conclusions.",
     },
     {
-      title: "Data-Efficient Learning",
-      description: "Strong performance with smaller training datasets. Faster implementation, lower costs.",
+      title: "Clinicians can audit the reasoning",
+      description: "Medical professionals can review and validate the AI's diagnostic process.",
     },
     {
-      title: "Physics-Informed Core",
-      description: "Mathematical rules and biological principles ensure anatomical accuracy and realism.",
+      title: "Regulators can verify the logic",
+      description: "Built for regulatory approval with complete traceability and documentation.",
     },
     {
-      title: "Fully Explainable",
-      description: "Built-in transparency and traceability. Every decision pathway is visible. Regulatory-friendly by design.",
-    },
-    {
-      title: "Zero GPU Dependency",
-      description: "Works on CPUs, edge devices, anywhere you need it. Deploy in resource-limited settings.",
+      title: "No black box mystery",
+      description: "While competitors optimize for performance alone, we optimize for trust.",
     },
   ],
 };
