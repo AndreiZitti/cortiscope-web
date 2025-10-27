@@ -18,11 +18,17 @@ export default function StatCard({ value, label, delay = 0 }: StatCardProps) {
       transition={{ duration: 0.5, delay }}
       className="text-center p-6"
     >
-      <div className="text-5xl md:text-6xl font-bold text-primary mb-2">
+      <motion.div
+        initial={{ scale: 0.5 }}
+        whileInView={{ scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: delay + 0.2, type: "spring" }}
+        className="text-5xl md:text-6xl font-bold mb-2"
+      >
         {/* Animation: counting */}
         {value}
-      </div>
-      <div className="text-gray-600 text-lg">{label}</div>
+      </motion.div>
+      <div className="text-lg opacity-90">{label}</div>
     </motion.div>
   );
 }
