@@ -1,160 +1,160 @@
 // Hero Section
 export const HERO = {
-  headline: "Stop Infections Before They Spread",
-  subheadline: "Cortiscope uses biologically-aware AI to predict and prevent hospital-acquired infections in real-time.",
+  headline: "Medical AI That Actually Deploys",
+  subheadline: "Physics-informed neural networks for medical imaging. Runs on CPUs, explains every decision, works where GPUs don't.",
   stats: [
-    { value: "99.6%", label: "Accuracy" },
-    { value: "3 Days", label: "Early Warning" },
-    { value: "40%", label: "Reduced HAIs" },
-    { value: "24/7", label: "Monitoring" },
+    { value: "30K", label: "parameters" },
+    { value: "60kB", label: "model" },
+    { value: "No GPU", label: "needed" },
+    { value: "100%", label: "explainable" },
   ],
   cta: {
-    primary: "Request Demo",
-    secondary: "Learn More",
+    primary: "Schedule Demo",
+    secondary: "See How It Works",
   },
 };
 
 // Problem Section
 export const PROBLEMS = [
   {
-    title: "Reactive, Not Proactive",
-    description: "Traditional surveillance systems only detect infections after they've already spread, leaving hospitals constantly playing catch-up.",
+    title: "Inaccessible",
+    description: "Current medical AI requires expensive GPU clusters. Hospitals in remote areas and resource-limited settings can't deploy it.",
   },
   {
-    title: "Data Blind Spots",
-    description: "Most systems miss 60% of infection patterns by ignoring the biological and physical reality of how pathogens actually move through hospitals.",
+    title: "Untrustworthy",
+    description: "Black-box models that clinicians can't audit, regulators can't approve, and patients can't understand.",
   },
   {
-    title: "False Alarm Fatigue",
-    description: "Alert systems overwhelm staff with false positives, causing real threats to be missed in the noise.",
+    title: "Impractical",
+    description: "Months of training time, massive compute costs, and complex integration make deployment nearly impossible.",
   },
 ];
 
 // Comparison Section
 export const COMPARISON = {
-  title: "Why Traditional Systems Fail",
+  title: "Why NosoScan Is Different",
   rows: [
     {
-      feature: "Detection Speed",
-      traditional: "5-7 days after symptom onset",
-      nososcan: "3 days before clinical symptoms",
+      feature: "Parameters",
+      traditional: "Millions of parameters",
+      nososcan: "30,000 parameters",
     },
     {
-      feature: "Accuracy",
-      traditional: "70-80% (high false positive rate)",
-      nososcan: "99.6% prediction accuracy",
+      feature: "Hardware",
+      traditional: "GPU clusters required",
+      nososcan: "Runs on hospital laptops",
     },
     {
-      feature: "Approach",
-      traditional: "Reactive - waits for lab results",
-      nososcan: "Proactive - predicts transmission",
+      feature: "Transparency",
+      traditional: "Black box decisions",
+      nososcan: "Fully traceable pathways",
     },
     {
-      feature: "Pathogen Coverage",
-      traditional: "Limited to tested organisms",
-      nososcan: "Universal - all pathogens",
+      feature: "Training Time",
+      traditional: "Months to train",
+      nososcan: "Days to deploy",
     },
     {
-      feature: "Integration",
-      traditional: "Manual data entry, siloed systems",
-      nososcan: "Automatic EMR integration",
+      feature: "Cost",
+      traditional: "$$$$ compute infrastructure",
+      nososcan: "$ CPU-only deployment",
     },
   ],
 };
 
 // Biologically Aware Section
 export const BIOLOGICALLY_AWARE = {
-  headline: "The First Biologically-Aware Infection Surveillance System",
+  headline: "AI That Understands Anatomy",
   parts: [
     {
-      title: "Biology",
-      description: "We model how pathogens actually behave - their growth rates, colonization patterns, and transmission dynamics based on real microbiology, not just data correlations.",
+      title: "Biology to understand anatomy",
+      description: "Built-in anatomical knowledge ensures realistic, biologically-plausible results",
     },
     {
-      title: "Physics",
-      description: "Infections spread through physical space. We map patient movements, staff workflows, and environmental factors to understand the actual transmission pathways in your facility.",
+      title: "Physics to ensure realism",
+      description: "Mathematical rules and physical principles guide the model's predictions",
     },
     {
-      title: "AI",
-      description: "Our neural networks don't just find patterns - they understand causation. The system learns the unique ecology of your hospital while respecting universal biological laws.",
+      title: "AI to analyze images",
+      description: "Neural networks process medical scans with speed and precision",
     },
   ],
 };
 
 // Technology Section
 export const TECHNOLOGY = {
-  title: "How NosoScan Works",
+  title: "NosoScan Technology",
   features: [
     {
-      title: "Continuous EMR Integration",
-      description: "Seamlessly pulls data from your existing electronic medical records in real-time, no manual entry required.",
+      title: "Lightweight Architecture",
+      description: "30,000 parameters. 60kB code size. Runs on hospital-grade laptops or even Raspberry Pi.",
     },
     {
-      title: "Physics-Based Transmission Modeling",
-      description: "Maps patient movements, staff workflows, and environmental factors to model actual transmission pathways.",
+      title: "Data-Efficient Learning",
+      description: "Strong performance with smaller training datasets. Faster implementation, lower costs.",
     },
     {
-      title: "Predictive Risk Scoring",
-      description: "Every patient receives a dynamic risk score that updates continuously as conditions change.",
+      title: "Physics-Informed Core",
+      description: "Mathematical rules and biological principles ensure anatomical accuracy and realism.",
     },
     {
-      title: "Automated Alert System",
-      description: "Intelligent notifications go directly to infection prevention teams with specific, actionable recommendations.",
+      title: "Fully Explainable",
+      description: "Built-in transparency and traceability. Every decision pathway is visible. Regulatory-friendly by design.",
     },
     {
-      title: "Outcome Tracking & Analytics",
-      description: "Track the impact of interventions and generate compliance reports automatically.",
+      title: "Zero GPU Dependency",
+      description: "Works on CPUs, edge devices, anywhere you need it. Deploy in resource-limited settings.",
     },
   ],
 };
 
 // Use Cases Section
 export const USE_CASES = {
-  title: "Built for Every Department",
+  title: "Where NosoScan Works",
   cases: [
     {
-      title: "Intensive Care Units",
-      description: "Monitor the highest-risk patients with real-time surveillance that predicts ventilator-associated pneumonia, central line infections, and multi-drug resistant organisms before they manifest.",
+      title: "Tumor Monitoring in Oncology",
+      description: "Volumetric tumor segmentation measures total volume and subregions (necrosis, enhancing core). Supports longitudinal care, dose adjustments, and therapy response prediction.",
     },
     {
-      title: "Surgical Units",
-      description: "Reduce surgical site infections by identifying pre-operative colonization risks and tracking post-operative wound healing patterns.",
+      title: "Clinical Trials & Research",
+      description: "Highly efficient model works consistently across imaging centers. Reduces manual annotation burden and bias in multi-site studies. Explainability aids regulatory approval.",
     },
     {
-      title: "Long-Term Care Facilities",
-      description: "Protect vulnerable populations by detecting C. difficile transmission chains and preventing outbreaks before they spread through units.",
+      title: "Pre-Surgical Planning",
+      description: "High anatomical accuracy produces exportable 3D models. Integrates with surgical navigation tools for precise planning.",
     },
     {
-      title: "Emergency Departments",
-      description: "Screen incoming patients for colonization risks and optimize bed placement to minimize transmission during high-census periods.",
+      title: "Resource-Limited / Field Deployment",
+      description: "Runs on CPU-only edge devices (Raspberry Pi, Jetson). Brings morphological diagnostics to settings where full radiology infrastructure isn't available.",
     },
   ],
 };
 
 // Stats Section
 export const STATS_SECTION = {
-  title: "Proven Results Across Healthcare Systems",
+  title: "By The Numbers",
   stats: [
-    { value: "40%", label: "Reduction in HAIs" },
-    { value: "99.6%", label: "Prediction Accuracy" },
-    { value: "3 Days", label: "Early Warning Time" },
-    { value: "$2.8M", label: "Avg. Annual Savings" },
-    { value: "15 Min", label: "Setup Time" },
+    { value: "70%", label: "Reduction in training time" },
+    { value: "30,000", label: "Parameters (vs millions)" },
+    { value: "60 kB", label: "Model size" },
+    { value: "100%", label: "Decision traceability" },
+    { value: "$35", label: "Works on Raspberry Pi hardware" },
   ],
 };
 
 // CTA Section
 export const CTA_SECTION = {
-  headline: "Ready to Stop Infections Before They Start?",
+  headline: "Ready to Deploy Real Medical AI?",
   paths: [
     {
-      title: "For Hospitals & Health Systems",
-      description: "Schedule a personalized demo to see NosoScan in action with your data.",
-      cta: "Request Demo",
+      title: "For Hospitals",
+      description: "See how NosoScan can work in your imaging workflow and resource constraints.",
+      cta: "Schedule Demo",
     },
     {
-      title: "For Research & Implementation Partners",
-      description: "Join us in revolutionizing infection prevention through biologically-aware AI.",
+      title: "For Hardware Partners",
+      description: "Discuss integration opportunities and edge deployment strategies.",
       cta: "Partner With Us",
     },
   ],

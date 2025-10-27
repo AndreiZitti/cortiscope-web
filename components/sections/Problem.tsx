@@ -14,7 +14,7 @@ export default function Problem() {
           viewport={{ once: true }}
           className="text-4xl md:text-5xl font-bold text-center text-dark mb-16"
         >
-          The Problem with Traditional Surveillance
+          The Problem
         </motion.h2>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
