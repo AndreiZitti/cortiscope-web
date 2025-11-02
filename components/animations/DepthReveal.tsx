@@ -39,6 +39,8 @@ export default function DepthReveal() {
       p.getAttribute('fill') === '#fff' || p.getAttribute('fill') === '#231F20'
     );
 
+    if (!centerTriangle) return;
+
     // Set all invisible
     gsap.set([centerTriangle, ...connecting, ...outerCube, ...blackHexagons], {
       opacity: 0,
@@ -57,33 +59,41 @@ export default function DepthReveal() {
     });
 
     // 2. Connecting faces
-    tl.to(connecting, {
-      opacity: 1,
-      scale: 1,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: 'back.out(1.4)'
-    }, '+=0.2');
+    if (connecting.length > 0) {
+      tl.to(connecting, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: 'back.out(1.4)'
+      }, '+=0.2');
+    }
 
     // 3. Outer cube edges
-    tl.to(outerCube, {
-      opacity: 1,
-      scale: 1,
-      duration: 0.7,
-      stagger: 0.08,
-      ease: 'power2.out'
-    }, '+=0.2');
+    if (outerCube.length > 0) {
+      tl.to(outerCube, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.7,
+        stagger: 0.08,
+        ease: 'power2.out'
+      }, '+=0.2');
+    }
 
     // 4. Black hexagons
-    tl.to(blackHexagons, {
-      opacity: 1,
-      scale: 1,
-      duration: 0.8,
-      stagger: 0.06,
-      ease: 'power2.out'
-    }, '+=0.2');
+    if (blackHexagons.length > 0) {
+      tl.to(blackHexagons, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.8,
+        stagger: 0.06,
+        ease: 'power2.out'
+      }, '+=0.2');
+    }
 
-    return () => tl.kill();
+    return () => {
+      tl.kill();
+    };
   }, []);
 
   return (
