@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+        #container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <script>
+        const iframe = document.createElement('iframe');
+        iframe.src = 'brain_skull_tumor_angled.html';
+        document.getElementById('container').appendChild(iframe);
+
+        iframe.onload = function() {
+            setTimeout(() => {
+                try {
+                    const iframeWindow = iframe.contentWindow;
+                    const plotDiv = iframeWindow.document.querySelector('.js-plotly-plot');
+
+                    if (plotDiv && iframeWindow.Plotly) {
+                        const customCamera = {
+                            eye: {
+                                x: 4.292770558824124,
+                                y: 0.025644186043398687,
+                                z: 0.2745635466432744
+                            },
+                            center: {
+                                x: 0.21648115491272,
+                                y: 1.3014918778207551,
+                                z: -0.9031955227891307
+                            },
+                            up: {
+                                x: -0.00024089699754477898,
+                                y: 0.006850265782063595,
+                                z: 0.9999765076377304
+                            }
+                        };
+
+                        iframeWindow.Plotly.relayout(plotDiv, {
+                            'scene.camera': customCamera,
+                            'scene.domain': { x: [0, 1], y: [0, 1] },
+                            'margin': { l: 0, r: 0, t: 0, b: 0, pad: 0 }
+                        });
+
+                        plotDiv.style.width = '100%';
+                        plotDiv.style.height = '100%';
+                    }
+                } catch (e) {
+                    console.error('Error applying camera settings:', e);
+                }
+            }, 2000);
+        };
+    </script>
+</body>
+</html>
