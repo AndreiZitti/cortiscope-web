@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { AnimationProvider } from "@/contexts/AnimationContext";
 
 export const metadata: Metadata = {
   title: "Cortiscope - Biologically-Aware Infection Surveillance",
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <AnimationProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </AnimationProvider>
       </body>
     </html>
   );

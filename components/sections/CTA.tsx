@@ -36,74 +36,116 @@ export default function CTA() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold text-center text-dark mb-16"
+          className="text-4xl md:text-5xl font-bold text-center text-dark mb-12"
         >
           {CTA_SECTION.headline}
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto mb-16">
-          {CTA_SECTION.paths.map((path, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="p-8 bg-white rounded-xl shadow-lg"
-            >
-              <h3 className="text-2xl font-bold text-dark mb-4">
-                {path.title}
-              </h3>
-              <p className="text-gray-600 mb-6">{path.description}</p>
-              <Button>{path.cta}</Button>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Contact Form */}
+        {/* Compact Contact Form */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg"
+          className="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg"
         >
-          <h3 className="text-2xl font-bold text-dark mb-6 text-center">
-            Get in Touch
-          </h3>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {CTA_SECTION.form.fields.map((field, index) => (
-              <div key={index}>
+          <form onSubmit={handleSubmit}>
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              {/* Left Column: Name, Email, Organization */}
+              <div className="space-y-6">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-semibold text-dark mb-2"
+                  >
+                    Name<span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-semibold text-dark mb-2"
+                  >
+                    Email<span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="organization"
+                    className="block text-sm font-semibold text-dark mb-2"
+                  >
+                    Organization<span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    id="organization"
+                    name="organization"
+                    type="text"
+                    required
+                    value={formData.organization}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                </div>
+              </div>
+
+              {/* Right Column: Message textarea (full height) */}
+              <div className="flex flex-col">
                 <label
-                  htmlFor={field.name}
+                  htmlFor="message"
                   className="block text-sm font-semibold text-dark mb-2"
                 >
-                  {field.label}
-                  {field.required && <span className="text-red-500">*</span>}
+                  Message
                 </label>
-                {field.type === "textarea" ? (
-                  <textarea
-                    id={field.name}
-                    name={field.name}
-                    required={field.required}
-                    value={formData[field.name as keyof typeof formData]}
-                    onChange={handleChange}
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                ) : (
-                  <input
-                    id={field.name}
-                    name={field.name}
-                    type={field.type}
-                    required={field.required}
-                    value={formData[field.name as keyof typeof formData]}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                )}
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={10}
+                  className="w-full flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                  placeholder="Tell us about your needs..."
+                />
               </div>
-            ))}
-            <Button className="w-full">Submit</Button>
+            </div>
+
+            {/* Bottom Row: Role + Submit */}
+            <div className="flex flex-col md:flex-row gap-4 items-end">
+              <div className="flex-1">
+                <label
+                  htmlFor="role"
+                  className="block text-sm font-semibold text-dark mb-2"
+                >
+                  Role <span className="text-gray-400 text-xs">(optional)</span>
+                </label>
+                <input
+                  id="role"
+                  name="role"
+                  type="text"
+                  value={formData.role}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  placeholder="e.g., Radiologist, CTO, Researcher"
+                />
+              </div>
+              <Button className="md:w-auto w-full px-12">Submit</Button>
+            </div>
           </form>
         </motion.div>
       </div>

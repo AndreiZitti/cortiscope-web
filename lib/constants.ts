@@ -143,6 +143,22 @@ export const STATS_SECTION = {
   ],
 };
 
+// Solution Cards
+export const SOLUTIONS = [
+  {
+    title: "Tiny & Efficient",
+    description: "30K parameters run on hospital laptops and edge devices. No GPU required.",
+  },
+  {
+    title: "Fully Explainable",
+    description: "Every decision is traceable. Clinicians can audit, regulators can verify.",
+  },
+  {
+    title: "Fast Deployment",
+    description: "Days to deploy, not months. Works in resource-limited settings.",
+  },
+];
+
 // CTA Section
 export const CTA_SECTION = {
   headline: "Ready to Deploy Real Medical AI?",
