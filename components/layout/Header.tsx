@@ -101,6 +101,17 @@ export default function Header() {
           </div>
 
           <a
+            href="/demo"
+            className={`font-semibold transition-colors ${
+              isScrolled
+                ? "text-primary hover:text-primary/80"
+                : "text-dark hover:text-primary"
+            }`}
+          >
+            Demo
+          </a>
+
+          <a
             href="#contact"
             className={`font-semibold transition-colors ${
               isScrolled
