@@ -68,6 +68,13 @@ export default function SequentialEdgeDraw() {
           scrub: 1,
           pin: true,
           anticipatePin: 1,
+          id: 'sequential-edge-draw',
+          snap: {
+            snapTo: 1 / 6, // Snap to intervals (6 states in the animation)
+            duration: { min: 0.2, max: 0.5 },
+            delay: 0.1,
+            ease: 'power2.inOut'
+          },
         },
       });
 
@@ -217,7 +224,11 @@ export default function SequentialEdgeDraw() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative min-h-screen bg-white overflow-hidden">
+    <section
+      id="sequential-edge-draw"
+      ref={containerRef}
+      className="relative min-h-screen bg-white overflow-hidden"
+    >
       {/* Problems Section */}
       <div
         ref={problemSectionRef}

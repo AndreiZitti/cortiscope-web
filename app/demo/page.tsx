@@ -141,52 +141,94 @@ export default function DemoPage() {
 
   // Analysis State
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="container mx-auto px-6 py-8">
-        <div className="grid md:grid-cols-2 gap-8" style={{ minHeight: 'calc(100vh - 4rem)' }}>
+    <div className="h-screen bg-gradient-to-br from-slate-50 to-blue-50 pt-20 pb-4 overflow-hidden">
+      <div className="container mx-auto px-6 h-full flex flex-col">
+        {/* Clinical Metadata Header */}
+        <div className="bg-white rounded-xl shadow-lg p-4 mb-4 flex-shrink-0">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div>
+              <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Patient ID</p>
+              <p className="text-lg font-semibold text-gray-800">PT-2847-MRI</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Scan Date</p>
+              <p className="text-lg font-semibold text-gray-800">2024-10-15</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Modality</p>
+              <p className="text-lg font-semibold text-gray-800">T1-Weighted MRI</p>
+            </div>
+            <div>
+              <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Tumor Volume</p>
+              <p className="text-lg font-semibold text-blue-600">47.3 cm³</p>
+            </div>
+          </div>
+          <div className="mt-2 pt-2 border-t border-gray-200">
+            <p className="text-xs text-gray-500">
+              Analysis completed: {new Date().toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+              })}
+            </p>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 flex-1 min-h-0">
 
           {/* Left Panel */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4 min-h-0">
             {/* View Selector Buttons */}
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">Analysis Views</h3>
-              <div className="flex flex-col gap-3">
+            <div className="bg-white rounded-xl shadow-lg p-4 flex-shrink-0">
+              <h3 className="text-base font-semibold text-gray-800 mb-3">Analysis Views</h3>
+              <div className="flex flex-col gap-2">
                 <button
                   onClick={() => handleViewChange('segmentation')}
-                  className={`px-6 py-4 rounded-lg font-medium transition-all text-left ${
+                  className={`px-4 py-3 rounded-lg font-medium transition-all text-left flex items-center gap-3 text-sm ${
                     currentView === 'segmentation'
                       ? 'bg-blue-600 text-white shadow-md'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
-                  1. Tumor Segmentation
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                  </svg>
+                  <span>1. Tumor Segmentation</span>
                 </button>
                 <button
                   onClick={() => handleViewChange('3d')}
-                  className={`px-6 py-4 rounded-lg font-medium transition-all text-left ${
+                  className={`px-4 py-3 rounded-lg font-medium transition-all text-left flex items-center gap-3 text-sm ${
                     currentView === '3d'
                       ? 'bg-blue-600 text-white shadow-md'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
-                  2. 3D Volumetric Analysis
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                  </svg>
+                  <span>2. 3D Volumetric Analysis</span>
                 </button>
                 <button
                   onClick={() => handleViewChange('uncertainty')}
-                  className={`px-6 py-4 rounded-lg font-medium transition-all text-left ${
+                  className={`px-4 py-3 rounded-lg font-medium transition-all text-left flex items-center gap-3 text-sm ${
                     currentView === 'uncertainty'
                       ? 'bg-blue-600 text-white shadow-md'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
-                  3. Uncertainty Map
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                  <span>3. Uncertainty Map</span>
                 </button>
               </div>
             </div>
 
             {/* Technical Info Panel */}
-            <div className="bg-white rounded-xl shadow-lg p-6 flex-1">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">Technical Information</h3>
+            <div className="bg-white rounded-xl shadow-lg p-4 flex-1 overflow-y-auto min-h-0">
+              <h3 className="text-base font-semibold text-gray-800 mb-3">Technical Information</h3>
 
               {currentView === 'segmentation' && (
                 <div className="space-y-4">
@@ -276,7 +318,7 @@ export default function DemoPage() {
           </div>
 
           {/* Right Panel - Content Area */}
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden relative" style={{ minHeight: '600px' }}>
+          <div className="bg-white rounded-xl shadow-lg overflow-hidden relative min-h-0">
             <AnimatePresence mode="wait">
               {currentView === 'segmentation' && (
                 <motion.div
@@ -303,6 +345,30 @@ export default function DemoPage() {
                       className="object-contain"
                       style={{ mixBlendMode: 'multiply', opacity: 0.7 }}
                     />
+
+                    {/* Slice Position Indicator - Top Left */}
+                    <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-2 rounded-lg text-sm font-mono">
+                      Slice 87/155
+                    </div>
+
+                    {/* Anatomical Orientation Markers */}
+                    <div className="absolute left-1/2 top-4 -translate-x-1/2 bg-black/70 text-white px-2 py-1 rounded text-xs font-semibold">
+                      A
+                    </div>
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/70 text-white px-2 py-1 rounded text-xs font-semibold">
+                      L
+                    </div>
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/70 text-white px-2 py-1 rounded text-xs font-semibold">
+                      R
+                    </div>
+                    <div className="absolute left-1/2 bottom-4 -translate-x-1/2 bg-black/70 text-white px-2 py-1 rounded text-xs font-semibold">
+                      P
+                    </div>
+
+                    {/* Zoom Level Indicator - Top Right */}
+                    <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-2 rounded-lg text-xs">
+                      Zoom: 100%
+                    </div>
                   </div>
                 </motion.div>
               )}

@@ -24,7 +24,7 @@ export default function AnimationsPage() {
         <p className="text-gray-400 text-center mb-12">Explore different animation styles organized by use case</p>
 
         {/* MORPHING - FEATURED */}
-        <section className="mb-16">
+        {/* <section className="mb-16">
           <h2 className="text-3xl font-bold mb-2 text-pink-400">✨ Morphing (Featured)</h2>
           <p className="text-gray-400 mb-6">Advanced shape transformations and brand-focused animations</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -44,7 +44,7 @@ export default function AnimationsPage() {
               component={<ParticleAssemblyV2 />}
             />
           </div>
-        </section>
+        </section> */}
 
         {/* HERO/FIRST LOAD */}
         <section className="mb-16">
@@ -56,7 +56,7 @@ export default function AnimationsPage() {
               description="Logo draws itself line by line"
               component={<SVGPathDrawing />}
             />
-            <AnimationCard
+            {/* <AnimationCard
               title="Particle Assembly"
               description="Scattered particles form the logo"
               component={<ParticleAssembly />}
@@ -65,7 +65,7 @@ export default function AnimationsPage() {
               title="Geometric Explosion"
               description="Pieces fly in and lock into place"
               component={<GeometricExplosion />}
-            />
+            /> */}
           </div>
         </section>
 

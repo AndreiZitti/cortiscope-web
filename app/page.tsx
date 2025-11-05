@@ -1,8 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import ProblemToSolution from "@/components/sections/ProblemToSolution";
-import WhyDifferent from "@/components/sections/WhyDifferent";
-import Transparency from "@/components/sections/Transparency";
-import BuiltForYou from "@/components/sections/BuiltForYou";
+import UnifiedFeatureScroll from "@/components/sections/UnifiedFeatureScroll";
 import CTA from "@/components/sections/CTA";
 
 export default function Home() {
@@ -10,9 +8,7 @@ export default function Home() {
     <>
       <Hero />
       <ProblemToSolution />
-      <WhyDifferent />
-      <Transparency />
-      <BuiltForYou />
+      <UnifiedFeatureScroll />
       <CTA />
     </>
   );
