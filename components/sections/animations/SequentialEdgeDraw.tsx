@@ -309,10 +309,10 @@ export default function SequentialEdgeDraw() {
               />
 
               {/* All logo paths (appear after edges are drawn) */}
-              <path className="logo-path" d="M29.5801 20.1746V34.3904L24.5 37.323V17.1238L29.5801 20.1746Z" fill="#231F20" />
-              <path className="logo-path" d="M51.6104 6.73047L29.9561 19.2334L24.9844 16.248L51.6104 0.865234V6.73047Z" fill="#231F20" />
-              <path className="logo-path" d="M79.2282 16.2383L74.15 19.1621L52.61 6.73047V0.865234L79.2282 16.2383Z" fill="#231F20" />
-              <path className="logo-path" d="M79.7301 37.323L74.65 34.3904V20.0291L79.7301 17.1043V37.323Z" fill="#231F20" />
+              <path className="logo-path" d="M29.5801 20.1746V34.3904L24.5 37.323V17.1238L29.5801 20.1746Z" fill="#231F20" stroke="#231F20" strokeWidth="0.5" strokeLinejoin="miter" />
+              <path className="logo-path" d="M51.6104 6.73047L29.9561 19.2334L24.9844 16.248L51.6104 0.865234V6.73047Z" fill="#231F20" stroke="#231F20" strokeWidth="0.5" strokeLinejoin="miter" />
+              <path className="logo-path" d="M79.2282 16.2383L74.15 19.1621L52.61 6.73047V0.865234L79.2282 16.2383Z" fill="#231F20" stroke="#231F20" strokeWidth="0.5" strokeLinejoin="miter" />
+              <path className="logo-path" d="M79.7301 37.323L74.65 34.3904V20.0291L79.7301 17.1043V37.323Z" fill="#231F20" stroke="#231F20" strokeWidth="0.5" strokeLinejoin="miter" />
               <path className="logo-path" d="M28.11 110.67L28.12 103.65L6.09 90.92L0 94.43L28.11 110.67Z" fill="#231F20" />
               <path className="logo-path" d="M28.11 110.67L47.1 99.69L41.02 96.18L41.03 96.19L28.12 103.65L28.11 110.67Z" fill="#231F20" />
               <path className="logo-path" d="M0 94.43L6.09 90.92V65.48L0 61.96V94.43Z" fill="#231F20" />

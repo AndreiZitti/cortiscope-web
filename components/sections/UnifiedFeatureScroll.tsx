@@ -3,8 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 import ScrollProgressIndicator from '@/components/ui/ScrollProgressIndicator';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -77,29 +75,6 @@ const featureSets = [
   }
 ];
 
-// Generate spherical point clouds for BuiltForYou state
-const generateSpherePoints = (count: number, radius: number) => {
-  const points = [];
-  for (let i = 0; i < count; i++) {
-    const phi = Math.acos(1 - 2 * (i + 0.5) / count);
-    const theta = Math.PI * (1 + Math.sqrt(5)) * i;
-
-    const x = radius * Math.sin(phi) * Math.cos(theta);
-    const y = radius * Math.sin(phi) * Math.sin(theta);
-    const z = radius * Math.cos(phi);
-
-    points.push({
-      id: `${i}`,
-      x: x,
-      y: y,
-      delay: Math.random() * 0.5,
-    });
-  }
-  return points;
-};
-
-const sphereParticles = generateSpherePoints(1000, 100);
-const targetPositions = generateSpherePoints(50, 40);
 
 export default function UnifiedFeatureScroll() {
   const containerRef = useRef<HTMLElement>(null);
@@ -167,7 +142,7 @@ export default function UnifiedFeatureScroll() {
   // GSAP ScrollTrigger animation
   useEffect(() => {
     if (!containerRef.current || !state1Ref.current || !state2Ref.current || !state3Ref.current ||
-        !visual1Ref.current || !visual2Ref.current || !visual3Ref.current) return;
+      !visual1Ref.current || !visual2Ref.current || !visual3Ref.current) return;
 
     const container = containerRef.current;
     const state1 = state1Ref.current;
@@ -195,97 +170,93 @@ export default function UnifiedFeatureScroll() {
       ScrollTrigger.refresh();
 
       ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: container,
-          start: 'top top',
-          end: '+=300%', // Increased from 200% to give more scroll room
-          scrub: 1,
-          pin: true,
-          pinSpacing: true,
-          pinReparent: false, // Prevent reparenting issues
-          invalidateOnRefresh: true,
-          preventOverlaps: true,
-          fastScrollEnd: true,
-          id: 'unified-feature-scroll',
-          snap: {
-            snapTo: [0, 0.3, 0.6, 1], // Snap to hold positions (0%, 30%, 60%, 100%)
-            duration: 0.4, // Consistent snap duration
-            delay: 0.3, // Longer delay - only snap when user stops scrolling
-            ease: 'power2.inOut'
-          },
-          onUpdate: (self) => {
-            const progress = self.progress;
-            setScrollProgress(progress); // Update progress for indicator
-            if (progress < 0.33) {
-              setCurrentVisualState(0);
-            } else if (progress < 0.66) {
-              setCurrentVisualState(1);
-            } else {
-              setCurrentVisualState(2);
+        const TOTAL_DURATION = 100; // Use 100 for percentage clarity
+        const TRANSITION_DURATION = 5; // 5% of scroll for transitions
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: container,
+            start: 'top top',
+            end: '+=200%', // 2x viewport height of scrolling
+            scrub: 0.5,
+            pin: true,
+            pinSpacing: true,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+            refreshPriority: -1, // Lower priority than other ScrollTriggers
+            id: 'unified-feature-scroll',
+            onUpdate: (self) => {
+              const progress = self.progress;
+              setScrollProgress(progress);
+
+              // Update visual state at boundaries
+              if (progress < 0.33) {
+                setCurrentVisualState(0);
+              } else if (progress < 0.66) {
+                setCurrentVisualState(1);
+              } else {
+                setCurrentVisualState(2);
+              }
             }
-          }
-        },
-      });
+          },
+        });
 
-      // Timeline structure with longer hold states (now with 300% scroll):
-      // 0-20%: Hold State 1
-      // 20-25%: Transition State 1 -> State 2
-      // 25-50%: Hold State 2
-      // 50-55%: Transition State 2 -> State 3
-      // 55-100%: Hold State 3 (longest hold at the end)
+        // State 1: 0-30% (hold)
+        tl.to({}, { duration: 30 }, 0);
 
-      // State 1 holds, then fades out at 20%
-      tl.to(state1, {
-        opacity: 0,
-        y: -20,
-        duration: 0.3,
-        ease: 'power2.inOut'
-      }, 1.2) // Start at 20% of timeline
-      .to(visual1, {
-        opacity: 0,
-        duration: 0.3,
-        ease: 'power2.inOut'
-      }, 1.2);
+        // Transition 1->2: 30-35%
+        tl.to(state1, {
+          opacity: 0,
+          y: -20,
+          duration: TRANSITION_DURATION,
+          ease: 'power2.inOut'
+        }, 30)
+          .to(visual1, {
+            opacity: 0,
+            duration: TRANSITION_DURATION,
+            ease: 'power2.inOut'
+          }, 30)
+          .to(state2, {
+            opacity: 1,
+            y: 0,
+            duration: TRANSITION_DURATION,
+            ease: 'power2.inOut'
+          }, 30)
+          .to(visual2, {
+            opacity: 1,
+            duration: TRANSITION_DURATION,
+            ease: 'power2.inOut'
+          }, 30);
 
-      // State 2 fades in at 20%, holds until 50%
-      tl.to(state2, {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        ease: 'power2.inOut'
-      }, 1.2)
-      .to(visual2, {
-        opacity: 1,
-        duration: 0.3,
-        ease: 'power2.inOut'
-      }, 1.2);
+        // State 2: 35-63% (hold)
+        tl.to({}, { duration: 28 }, 35);
 
-      // State 2 fades out at 50%
-      tl.to(state2, {
-        opacity: 0,
-        y: -20,
-        duration: 0.3,
-        ease: 'power2.inOut'
-      }, 3)
-      .to(visual2, {
-        opacity: 0,
-        duration: 0.3,
-        ease: 'power2.inOut'
-      }, 3);
+        // Transition 2->3: 63-68%
+        tl.to(state2, {
+          opacity: 0,
+          y: -20,
+          duration: TRANSITION_DURATION,
+          ease: 'power2.inOut'
+        }, 63)
+          .to(visual2, {
+            opacity: 0,
+            duration: TRANSITION_DURATION,
+            ease: 'power2.inOut'
+          }, 63)
+          .to(state3, {
+            opacity: 1,
+            y: 0,
+            duration: TRANSITION_DURATION,
+            ease: 'power2.inOut'
+          }, 63)
+          .to(visual3, {
+            opacity: 1,
+            duration: TRANSITION_DURATION,
+            ease: 'power2.inOut'
+          }, 63);
 
-      // State 3 fades in at 50%, holds until end (45% of scroll dedicated to last state)
-      tl.to(state3, {
-        opacity: 1,
-        y: 0,
-        duration: 0.3,
-        ease: 'power2.inOut'
-      }, 3)
-      .to(visual3, {
-        opacity: 1,
-        duration: 0.3,
-        ease: 'power2.inOut'
-      }, 3);
+        // State 3: 68-100% (hold)
+        tl.to({}, { duration: 32 }, 68);
       }, container);
     }, 500); // Increased delay to allow previous ScrollTrigger to initialize
 
@@ -318,9 +289,16 @@ export default function UnifiedFeatureScroll() {
                 {featureSets[0].title}
               </h2>
               {featureSets[0].features.map((feature, index) => (
-                <div key={index} className={`border-l-4 border-${feature.color} pl-6`}>
+                <div
+                  key={index}
+                  className="border-l-4 pl-6"
+                  style={{ borderColor: feature.color === 'green-500' ? '#22c55e' : feature.color === 'blue-500' ? '#3b82f6' : '#a855f7' }}
+                >
                   <div className="flex items-center gap-3 mb-2">
-                    <div className={`w-4 h-4 rounded-full bg-${feature.color}`}></div>
+                    <div
+                      className="w-4 h-4 rounded-full"
+                      style={{ backgroundColor: feature.color === 'green-500' ? '#22c55e' : feature.color === 'blue-500' ? '#3b82f6' : '#a855f7' }}
+                    ></div>
                     <h3 className="text-2xl font-bold">{feature.title}</h3>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed">
@@ -336,9 +314,16 @@ export default function UnifiedFeatureScroll() {
                 {featureSets[1].title}
               </h2>
               {featureSets[1].features.map((feature, index) => (
-                <div key={index} className={`border-l-4 border-${feature.color} pl-6`}>
+                <div
+                  key={index}
+                  className="border-l-4 pl-6"
+                  style={{ borderColor: feature.color === 'green-500' ? '#22c55e' : feature.color === 'blue-500' ? '#3b82f6' : '#a855f7' }}
+                >
                   <div className="flex items-center gap-3 mb-2">
-                    <div className={`w-4 h-4 rounded-full bg-${feature.color}`}></div>
+                    <div
+                      className="w-4 h-4 rounded-full"
+                      style={{ backgroundColor: feature.color === 'green-500' ? '#22c55e' : feature.color === 'blue-500' ? '#3b82f6' : '#a855f7' }}
+                    ></div>
                     <h3 className="text-2xl font-bold">{feature.title}</h3>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed">
@@ -361,9 +346,16 @@ export default function UnifiedFeatureScroll() {
                 )}
               </div>
               {featureSets[2].features.map((feature, index) => (
-                <div key={index} className={`border-l-4 border-${feature.color} pl-6`}>
+                <div
+                  key={index}
+                  className="border-l-4 pl-6"
+                  style={{ borderColor: feature.color === 'green-500' ? '#22c55e' : feature.color === 'blue-500' ? '#3b82f6' : '#a855f7' }}
+                >
                   <div className="flex items-center gap-3 mb-2">
-                    <div className={`w-4 h-4 rounded-full bg-${feature.color}`}></div>
+                    <div
+                      className="w-4 h-4 rounded-full"
+                      style={{ backgroundColor: feature.color === 'green-500' ? '#22c55e' : feature.color === 'blue-500' ? '#3b82f6' : '#a855f7' }}
+                    ></div>
                     <h3 className="text-2xl font-bold">{feature.title}</h3>
                   </div>
                   <p className="text-gray-300 text-sm leading-relaxed">
@@ -393,32 +385,43 @@ export default function UnifiedFeatureScroll() {
               </div>
             </div>
 
-            {/* Visual 2: Same canvas (reused for transparency state) */}
-            <div ref={visual2Ref} className="absolute inset-0">
+            {/* Visual 2: Same brain scan canvas (reused for transparency state) */}
+            <div ref={visual2Ref} className="absolute inset-0 pointer-events-none">
               <div className="relative bg-gray-900 rounded-lg overflow-hidden shadow-2xl h-full flex items-center justify-center">
                 {!imagesLoaded && (
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-white">Loading...</div>
                   </div>
                 )}
-                <canvas
-                  className="w-full h-auto"
-                  style={{ display: 'block' }}
-                />
+                {imagesLoaded && brainImageRef.current && aiImageRef.current && (
+                  <canvas
+                    width={brainImageRef.current.width}
+                    height={brainImageRef.current.height}
+                    className="w-full h-auto"
+                    style={{ display: 'block' }}
+                    ref={(canvas) => {
+                      if (canvas && brainImageRef.current && aiImageRef.current) {
+                        const ctx = canvas.getContext('2d');
+                        if (ctx) {
+                          ctx.drawImage(brainImageRef.current, 0, 0);
+                          ctx.drawImage(aiImageRef.current, 0, 0);
+                        }
+                      }
+                    }}
+                  />
+                )}
               </div>
             </div>
 
-            {/* Visual 3: 3D iframe or particle comparison */}
+            {/* Visual 3: 3D iframe */}
             <div ref={visual3Ref} className="absolute inset-0">
               <div className="relative bg-gray-900 rounded-lg overflow-hidden shadow-2xl h-full">
-                {currentVisualState === 2 && (
-                  <iframe
-                    src="/brats_visualisations/brain_skull_tumor_custom_view.html"
-                    className="w-full h-full"
-                    style={{ border: 'none' }}
-                    title="3D Brain Tumor Visualization"
-                  />
-                )}
+                <iframe
+                  src="/brats_visualisations/brain_skull_tumor_custom_view.html"
+                  className="w-full h-full"
+                  style={{ border: 'none' }}
+                  title="3D Brain Tumor Visualization"
+                />
               </div>
             </div>
           </div>
