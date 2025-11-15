@@ -1,32 +1,32 @@
 // Hero Section
 export const HERO = {
-  headline: "Medical AI That Actually Deploys",
-  subheadline: "Biology guides. Physics informs. AI supports.",
+  headline: "Fast, Transparent Brain Tumor AI for Any Hospital",
+  subheadline: "Runs locally. Results you can trust.",
   stats: [
-    { value: "30K", label: "parameters" },
-    { value: "60kB", label: "model" },
-    { value: "No GPU", label: "needed" },
-    { value: "100%", label: "explainable" },
+    { icon: "🔒", value: "No Cloud Upload" },
+    { icon: "⚡", value: "30K Parameters" },
+    { icon: "✓", value: "100% Explainable" },
+    { icon: "⏱️", value: "5-Second Analysis" },
   ],
   cta: {
-    primary: "Schedule Demo",
-    secondary: "See How It Works",
+    primary: "Try It Out",
+    secondary: "Contact Us",
   },
 };
 
 // Problem Section
 export const PROBLEMS = [
   {
-    title: "Inaccessible",
-    description: "Current medical AI requires expensive GPU clusters. Hospitals in remote areas and resource-limited settings can't deploy it.",
+    title: "Too Expensive",
+    description: "Current medical AI requires GPU clusters hospitals can't afford.",
   },
   {
-    title: "Untrustworthy",
-    description: "Black-box models that clinicians can't audit, regulators can't approve, and patients can't understand.",
+    title: "Can't Be Verified",
+    description: "Black-box models clinicians can't audit or explain to patients.",
   },
   {
-    title: "Impractical",
-    description: "Months of training time, massive compute costs, and complex integration make deployment nearly impossible.",
+    title: "Slow & Invasive",
+    description: "Takes months to deploy, requires uploading patient data to the cloud.",
   },
 ];
 
@@ -147,15 +147,15 @@ export const STATS_SECTION = {
 export const SOLUTIONS = [
   {
     title: "Tiny & Efficient",
-    description: "30K parameters run on hospital laptops and edge devices. No GPU required.",
+    description: "Runs on standard laptops, no GPU needed.",
   },
   {
     title: "Fully Explainable",
-    description: "Every decision is traceable. Clinicians can audit, regulators can verify.",
+    description: "Every decision traceable, auditable.",
   },
   {
-    title: "Fast Deployment",
-    description: "Days to deploy, not months. Works in resource-limited settings.",
+    title: "Instant & On-Premise",
+    description: "Download and use immediately, patient data never leaves.",
   },
 ];
 

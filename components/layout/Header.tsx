@@ -60,7 +60,7 @@ export default function Header() {
 
         <div className="flex items-center gap-6">
           <a
-            href="/demo"
+            href="#demo-iframe"
             className={`font-semibold transition-colors ${
               isScrolled
                 ? "text-primary hover:text-primary/80"

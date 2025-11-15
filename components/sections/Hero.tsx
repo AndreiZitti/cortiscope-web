@@ -27,8 +27,8 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button href="#contact">{HERO.cta.primary}</Button>
-            <Button variant="secondary" href="#technology">
+            <Button href="#demo-iframe">{HERO.cta.primary}</Button>
+            <Button variant="secondary" href="#contact">
               {HERO.cta.secondary}
             </Button>
           </div>
@@ -38,14 +38,14 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+            className="flex flex-wrap justify-center gap-6 md:gap-8 max-w-4xl mx-auto"
           >
             {HERO.stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+              <div key={index} className="flex items-center gap-2 px-4 py-2 bg-white/80 rounded-full shadow-sm">
+                <span className="text-2xl">{stat.icon}</span>
+                <span className="text-sm md:text-base font-semibold text-dark whitespace-nowrap">
                   {stat.value}
-                </div>
-                <div className="text-gray-600">{stat.label}</div>
+                </span>
               </div>
             ))}
           </motion.div>

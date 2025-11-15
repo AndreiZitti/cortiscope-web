@@ -1,6 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import ProblemToSolution from "@/components/sections/ProblemToSolution";
-import UnifiedFeatureScroll from "@/components/sections/UnifiedFeatureScroll";
+import DemoIframe from "@/components/sections/DemoIframe";
 import CTA from "@/components/sections/CTA";
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <Hero />
       <ProblemToSolution />
-      <UnifiedFeatureScroll />
+      <DemoIframe />
       <CTA />
     </>
   );
